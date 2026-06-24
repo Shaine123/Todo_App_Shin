@@ -1,0 +1,111 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --PRIMARY-COLOR: #8057e7;
+}
+
+body {
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Montserrat;
+  background-color: rgb(254, 246, 246);
+}
+
+.container {
+  background-color: white;
+  width: 95%;
+  max-width: 450px;
+  border-radius: 1rem;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.header {
+  padding: 0.8rem;
+  background: linear-gradient(90deg, #a887fd, #8057e7);
+  font-size: 10px;
+  color: white;
+}
+
+.header h1 {
+  margin-bottom: 8px;
+}
+
+.input-container {
+  background-color: whitesmoke;
+  padding: 1rem;
+}
+
+.input-container input {
+  height: 40px;
+  width: 85%;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 5px;
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+.input-container button {
+  background-color: #8057e7;
+  padding: 10px 12px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.filters-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 55px;
+  border-top: 1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
+  padding-left: 8px;
+}
+
+.filters-container button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0 8px;
+  color: gray;
+  font-size: 14px;
+  transition: all ease 0.5s;
+}
+
+.filters-container button:hover {
+  color: var(--PRIMARY-COLOR);
+  border-bottom: 2px solid var(--PRIMARY-COLOR);
+}
+
+.todo-list {
+  height: 160px;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  color: gray;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.footer button {
+  background-color: transparent;
+  border: none;
+  color: gray;
+  font-weight: 600;
+  cursor: pointer;
+}
