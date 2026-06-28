@@ -24,9 +24,10 @@ function addNewTodo(e) {
     completed: false,
   };
 
-  todos.push(todo);
+  todosTemp.push(todo);
 
-  console.log(todos);
+  saveTodoToStorage();
+  updateTodoListUI();
 }
 
 function getListofTodos() {
@@ -37,6 +38,32 @@ function getListofTodos() {
 
 function updateTodoListUI() {
   let todos = getListofTodos();
+
+  console.log(todos, "tes");
+
+  const todosElement = todoList.firstElementChild;
+
+  todosElement.innerHTML = "";
+
+  todos.map((item) => {
+    todosElement.appendChild(createNewTodo(item.id, item.todoVal));
+  });
 }
 
-function createNewTodo() {}
+function createNewTodo(todoId, todoVal) {
+  const todoTemplate = `
+      <li>
+          <input type="checkbox" checked id="${todoId}" />
+          <span>${todoVal}</span>
+      </li>
+  `;
+
+  const li = document.createElement("li");
+  li.innerHTML = todoTemplate;
+
+  return li;
+}
+
+function saveTodoToStorage() {
+  localStorage.setItem("todos", JSON.stringify(todosTemp));
+}
