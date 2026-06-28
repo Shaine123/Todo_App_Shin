@@ -14,11 +14,11 @@
           <i class="fa-solid fa-circle-check"></i>
           My Tasks
         </h1>
-        <p>Monday, May 5</p>
+        <p id="date">Monday, May 5</p>
       </div>
 
       <div class="input-container">
-        <form action="">
+        <form action="" id="add-todo">
           <input
             type="text"
             id="todo-item"
@@ -36,11 +36,26 @@
         <button id="completed-btn">Completed</button>
       </div>
       <!-- this will show the list of todods -->
-      <div class="todo-list"></div>
+      <div class="todo-list">
+        <ul>
+          <li>
+            <input type="checkbox" checked />
+            <span>practice</span>
+          </li>
+          <li>
+            <input type="checkbox" checked />
+            <span>practice</span>
+          </li>
+          <li>
+            <input type="checkbox" checked />
+            <span>practice</span>
+          </li>
+        </ul>
+      </div>
 
       <div class="footer">
-        <p><span>0</span> items left</p>
-        <button>Clear completed</button>
+        <p><span id="items-left">0</span> items left</p>
+        <button id="clear-completed-btn">Clear completed</button>
       </div>
     </div>
 
