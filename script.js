@@ -5,12 +5,20 @@ const allBtn = document.getElementById("all-btn");
 const activeBtn = document.getElementById("active-btn");
 const completedBtn = document.getElementById("completed-btn");
 const clearCompletedBtn = document.getElementById("clear-completed-btn");
-const itemLeft = document.getElementById("item-left");
+const itemLeft = document.getElementById("items-left");
 const todoList = document.querySelector(".todo-list");
 
-const todosTemp = [];
+const todosTemp = getListofTodos();
 
 addTodo.addEventListener("submit", addNewTodo);
+
+document.body.addEventListener("change", (event) => {
+  if (event.target.matches('input[type="checkbox"]')) {
+    markCompletedTodo(event.target.id, event.target.checked);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", updateTodoListUI());
 
 function addNewTodo(e) {
   e.preventDefault();
@@ -33,29 +41,33 @@ function addNewTodo(e) {
 function getListofTodos() {
   return JSON.parse(localStorage.getItem("todos"))
     ? JSON.parse(localStorage.getItem("todos"))
-    : todosTemp;
+    : [];
 }
 
 function updateTodoListUI() {
   let todos = getListofTodos();
-
-  console.log(todos, "tes");
 
   const todosElement = todoList.firstElementChild;
 
   todosElement.innerHTML = "";
 
   todos.map((item) => {
-    todosElement.appendChild(createNewTodo(item.id, item.todoVal));
+    todosElement.appendChild(
+      createNewTodo(item.id, item.todoVal, item.completed),
+    );
   });
+
+  itemLeft.textContent = todos.length;
 }
 
-function createNewTodo(todoId, todoVal) {
+function createNewTodo(todoId, todoVal, todoStatus) {
   const todoTemplate = `
-      <li>
-          <input type="checkbox" checked id="${todoId}" />
+          <input type="checkbox" id="${todoId}" />
           <span>${todoVal}</span>
-      </li>
+
+          <button class="remove-btn">
+              <i class="fa-solid fa-xmark"></i>
+          </button>
   `;
 
   const li = document.createElement("li");
@@ -66,4 +78,20 @@ function createNewTodo(todoId, todoVal) {
 
 function saveTodoToStorage() {
   localStorage.setItem("todos", JSON.stringify(todosTemp));
+}
+
+function markCompletedTodo(id, isChecked) {
+  let todos = getListofTodos();
+
+  let updatedTodos = todos.map((item) => {
+    if (item.id == id) {
+      return { ...item, completed: isChecked };
+    }
+    return item;
+  });
+
+  todosTemp.splice(0, todosTemp.length, ...updatedTodos);
+
+  saveTodoToStorage();
+  updateTodoListUI();
 }

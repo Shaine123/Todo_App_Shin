@@ -92,6 +92,7 @@ body {
   border-bottom: 1px solid #d4d4d4;
   padding-left: 20px;
   padding-top: 15px;
+  overflow: auto;
 }
 
 .todo-list ul {
@@ -105,6 +106,15 @@ body {
   align-items: center;
   gap: 10px;
   list-style-type: none;
+  transition: all ease 0.5s;
+  padding: 12px 0;
+  padding-left: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.todo-list ul li:hover {
+  background-color: #f8f8f8;
 }
 
 .todo-list ul li input[type="checkbox"] {
@@ -127,6 +137,15 @@ body {
   color: white;
   font-size: 15px;
   left: 3px;
+}
+
+.todo-list ul li .remove-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  color: gray;
 }
 
 .todo-list ul span {
